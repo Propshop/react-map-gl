@@ -1,7 +1,7 @@
 {
-  "name": "react-map-gl-ps",
+  "name": "react-map-gl",
   "description": "A React wrapper for MapboxGL-js and overlay API modified by Propshop",
-  "version": "4.0.0-beta.7-1",
+  "version": "1.0.0",
   "keywords": [
     "mapbox",
     "mapbox-gl",
