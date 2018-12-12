@@ -18,9 +18,9 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import { createElement } from "react";
-import PropTypes from "prop-types";
-import DraggableControl from "./draggable-control";
+import {createElement} from 'react';
+import PropTypes from 'prop-types';
+import DraggableControl from './draggable-control';
 
 const propTypes = Object.assign({}, DraggableControl.propTypes, {
   // Custom className
@@ -41,7 +41,7 @@ const propTypes = Object.assign({}, DraggableControl.propTypes, {
 });
 
 const defaultProps = Object.assign({}, DraggableControl.defaultProps, {
-  className: "",
+  className: '',
   offsetLeft: 0,
   offsetTop: 0
 });
@@ -54,35 +54,30 @@ const defaultProps = Object.assign({}, DraggableControl.defaultProps, {
  * recalculate the marker's position when the parent re-renders.
  */
 export default class Marker extends DraggableControl {
+
   static propTypes = propTypes;
   static defaultProps = defaultProps;
 
   _render() {
-    const {
-      className,
-      longitude,
-      latitude,
-      offsetLeft,
-      offsetTop
-    } = this.props;
-    const { dragPos, dragOffset } = this.state;
+    const {className, longitude, latitude, offsetLeft, offsetTop} = this.props;
+    const {dragPos, dragOffset} = this.state;
 
-    const [x, y] = dragPos
-      ? this._getDraggedPosition(dragPos, dragOffset)
-      : this._context.viewport.project([longitude, latitude]);
+    const [x, y] = dragPos ?
+      this._getDraggedPosition(dragPos, dragOffset) :
+      this._context.viewport.project([longitude, latitude]);
 
     const containerStyle = {
-      position: "absolute",
-      transform: `translate(${x + offsetLeft}px,${y + offsetTop}px)`,
-      left: 0,
-      top: 0
+      position: 'absolute',
+      left: x + offsetLeft,
+      top: y + offsetTop
     };
 
-    return createElement("div", {
+    return createElement('div', {
       className: `mapboxgl-marker ${className}`,
       ref: this._containerRef,
       style: containerStyle,
       children: this.props.children
     });
   }
+
 }
