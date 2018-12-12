@@ -68,8 +68,9 @@ export default class Marker extends DraggableControl {
 
     const containerStyle = {
       position: 'absolute',
-      left: x + offsetLeft,
-      top: y + offsetTop
+      transform: `translate(${x + offsetLeft}px,${y + offsetTop}px)`,
+      left: 0,
+      top: 0
     };
 
     return createElement('div', {
